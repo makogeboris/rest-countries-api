@@ -18,6 +18,10 @@ const StyledHome = styled.main`
   @media (min-width: 64rem) {
     padding-block-end: var(--space-xl);
   }
+
+  @media (min-width: 85.625rem) {
+    padding-inline: var(--space-5xl);
+  }
 `;
 
 const Wrapper = styled.div`

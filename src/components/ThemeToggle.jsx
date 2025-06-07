@@ -1,18 +1,6 @@
 import styled from "styled-components";
 import { useDarkMode } from "../contexts/DarkModeContext";
 
-const ToggleText = styled.p`
-  font-weight: var(--fw-semi-bold);
-  font-size: var(--fs-sm);
-  line-height: var(--lh-tight);
-  color: var(--clr-text);
-
-  @media (min-width: 26.875rem) {
-    font-size: var(--fs-md);
-    line-height: var(--lh-loose);
-  }
-`;
-
 const ToggleButton = styled.button`
   background: transparent;
   border: transparent;
@@ -21,10 +9,19 @@ const ToggleButton = styled.button`
   gap: var(--space-xxs);
   padding: 0;
   border-radius: 4px;
+  font-weight: var(--fw-semi-bold);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-tight);
+  color: var(--clr-text);
 
   &:focus-visible {
     outline: 2px solid var(--outline);
     outline-offset: 3px;
+  }
+
+  @media (min-width: 26.875rem) {
+    font-size: var(--fs-md);
+    line-height: var(--lh-loose);
   }
 `;
 
@@ -32,7 +29,11 @@ function ThemeToggle() {
   const { isDarkMode, toggleDarkMode } = useDarkMode();
 
   return (
-    <ToggleButton onClick={toggleDarkMode} aria-label="Toggle Theme">
+    <ToggleButton
+      type="button"
+      onClick={toggleDarkMode}
+      aria-label="Toggle Theme"
+    >
       {isDarkMode ? (
         <svg
           width="16"
@@ -65,7 +66,7 @@ function ThemeToggle() {
         </svg>
       )}
 
-      <ToggleText>{isDarkMode ? "Light Mode" : "Dark Mode"}</ToggleText>
+      {isDarkMode ? "Light Mode" : "Dark Mode"}
     </ToggleButton>
   );
 }
